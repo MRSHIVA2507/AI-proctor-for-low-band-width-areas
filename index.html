@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexProctor | AI Exam Guard</title>
+  <meta name="description" content="State-of-the-art AI proctoring for high-stakes assessments." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css">
+
+  <!-- Critical Base Style for initial render -->
+  <style>
+    :root {
+      --primary: #10b981;
+      --bg-black: #000000;
+      --text-main: #f0fdf4;
+      --text-muted: #64748b;
+      --glass-heavy: rgba(16, 185, 129, 0.08);
+      --glass-border: rgba(16, 185, 129, 0.15);
+      --glow: 0 0 40px rgba(16, 185, 129, 0.15);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-black);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div id="app">
+    <nav class="container"
+      style="display: flex; justify-content: flex-end; align-items: center; padding: 2rem; max-width: 1400px; margin: 0 auto; width: 100%;">
+      <div class="logo"
+        style="display: flex; align-items: center; gap: 1rem; font-weight: 900; font-size: 1.75rem; color: var(--primary); cursor: pointer; user-select: none; letter-spacing: -0.02em;">
+        <div
+          style="background: linear-gradient(135deg, var(--primary), #059669); color: white; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 14px; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3); font-size: 1.25rem;">
+          N
+        </div>
+        <span>NexProctor</span>
+      </div>
+    </nav>
+
+    <main id="main-content" class="container"
+      style="max-width: 1400px; margin: 0 auto; width: 100%; padding: 1rem 2rem;">
+      <div id="view-mount" class="fade-in">
+        <!-- Premium Instant Login -->
+        <div class="card" style="max-width: 480px; margin: 6rem auto; position: relative; overflow: hidden;">
+          <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, var(--primary), transparent);">
+          </div>
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <div
+              style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background: var(--glass-heavy); border-radius: 1.5rem; border: 1px solid var(--glass-border); margin-bottom: 1.5rem; box-shadow: var(--glow);">
+              <span style="font-size: 2rem;">🛡️</span>
+            </div>
+            <h2 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;">Secure
+              Access</h2>
+            <p style="color: var(--text-muted); font-size: 1rem;">Protocol activation required for assessment.</p>
+          </div>
+
+          <form id="login-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="input-group">
+              <label class="input-label">Student ID</label>
+              <input type="text" class="input-field" id="email" value="STUDENT001" autocomplete="off" required />
+            </div>
+            <div class="input-group">
+              <label class="input-label">Unique Exam Code</label>
+              <input type="text" class="input-field" id="exam-code" placeholder="e.g. NEX-A1B2" autocomplete="off"
+                required style="text-transform: uppercase;" />
+              <div id="login-error"
+                style="color: var(--danger); font-size: 0.85rem; margin-top: 0.5rem; display: none;"></div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btn-login"
+              style="width: 100%; margin-top: 1rem; height: 3.5rem;">
+              Establish Connection
+            </button>
+          </form>
+
+          <div
+            style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--glass-border); text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+            <button onclick="window.renderProctorLogin && window.renderProctorLogin()"
+              style="background: none; border: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; text-decoration: underline;">
+              Administrator / Proctor Access
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container"
+      style="text-align: center; color: #475569; padding: 4rem; font-size: 0.875rem; max-width: 1400px; margin: 0 auto; width: 100%; font-weight: 500;">
+      &copy; 2026 NexProctor AI Security Engine &bull; Secure Protocol Active
+    </footer>
+  </div>
+
+  <!-- Scripts Moved to Bottom to prevent render blocking -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-detection"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
